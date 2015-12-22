@@ -10,3 +10,25 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+# Ignore all temporary files in the root directory		
+*.[oa]		
+/bin/		
+
+/.externalToolBuilders/		
+/.settings		
+/.settings/**/*
+/target		
+/target/**/*
+/doc/		
+/test-output
+/test-output/**/*
+.classpath		
+.project		
+/.checkstyle		
+
+# ignore doc/notes.txt, but not doc/info/arch.txt		
+# doc/*.txt		
+
+# ignore all .txt files in the directory doc/		
+# doc/**/*.txt
