@@ -32,3 +32,6 @@ hs_err_pid*
 
 # ignore all .txt files in the directory doc/		
 # doc/**/*.txt
+
+# ignore all pictures
+*.bmp
