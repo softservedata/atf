@@ -1,0 +1,7 @@
+10:16:34,700 ERROR main Calc:calcMethod:10 - Calc Error
+10:16:34,700  WARN main Calc:calcMethod:11 - Calc Warning
+10:16:34,700  INFO main Calc:calcMethod:12 - Calc Info
+10:16:34,700 ERROR main Some:someMethod:10 - Some Error
+10:16:34,702  WARN main Some:someMethod:11 - Some Warning
+10:16:34,702  INFO main Some:someMethod:12 - Some Info
+10:16:34,702 DEBUG main Some:someMethod:13 - Some Debug
