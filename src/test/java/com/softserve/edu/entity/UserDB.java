@@ -2,7 +2,7 @@ package com.softserve.edu.entity;
 
 public class UserDB {
     public static enum UserDBQueries {
-        INSERT_USER_BY_LOGIN("INSERT INTO dbo.Users (Login, Password, FirstName, LastName, Email, RegionRef, RoleRef) VALUES ('%s', '%s', '%s', '%s', '%s', %s, %s);"),
+        INSERT_USER_BY_LOGIN("INSERT INTO dbo.Users (Login, Password, FirstName, LastName, Email, RegionRef, RoleRef, IsUserActive) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '1');"),
         GET_USER_BY_LOGIN("SELECT ID, Login, Password, FirstName, LastName, Email, RegionRef, RoleRef FROM dbo.Users WHERE Login = '%s';"),
         GET_ALL_USERS("SELECT ID, Login, Password, FirstName, LastName, Email, RegionRef, RoleRef FROM dbo.Users;"),
         DELETE_USER_BY_ID("DELETE dbo.Users WHERE ID='%s';"),

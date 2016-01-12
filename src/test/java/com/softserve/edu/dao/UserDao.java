@@ -31,6 +31,30 @@ public class UserDao {
 
     // TODO Develop get() {}
 
+    public boolean insertUser(String login, String password, String firstname, String lastname, String email,
+    		Long region, Long role) {
+        Statement statement = null;
+        boolean result = false;
+        String query = String.format(UserDBQueries.INSERT_USER_BY_LOGIN.toString(), 
+        		login, password, firstname, lastname, email, region.toString(), role.toString());
+        try {
+            statement = ConnectionUtils.get(dataSource).getConnection().createStatement();
+            result = statement.execute(query);
+        } catch (SQLException e) {
+            throw new RuntimeException(DATABASE_READING_ERROR, e);
+        } finally {
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (Exception ex) {
+                    // TODO Warning
+                }
+            }
+        }
+        // TODO result must be return if delete Ok
+        return result;
+    }
+    
     public UserDB getUserByLogin(String login) {
         UserDB user = null;
         Statement statement = null;
@@ -125,7 +149,11 @@ public class UserDao {
         return result;
     }
 
-    public boolean deleteUsersByPartialLogin(String partialLogin) {
+	public boolean deleteUserDB(UserDB userDB) {
+		return deleteUserById(userDB.getId());
+	}
+    
+	public boolean deleteUsersByPartialLogin(String partialLogin) {
         Statement statement = null;
         boolean result = false;
         String query = String.format(UserDBQueries.DELETE_USER_BY_PARTIAL_LOGIN.toString(), partialLogin);

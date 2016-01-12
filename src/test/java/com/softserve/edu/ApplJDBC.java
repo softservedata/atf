@@ -20,6 +20,7 @@ public class ApplJDBC {
 	//
 	//private static String URL = "jdbc:sqlserver://CLASS86\\SQLEXPRESS2;databasename=Business;";
 	//private static String URL = "jdbc:jtds:sqlserver://CLASS86/Business;instance=SQLEXPRESS2;";
+	//private static String URL = "jdbc:jtds:sqlserver://CLASS86/_097_OMS;instance=SQLEXPRESS2;";
 	//private static String username = "097db";
 	//private static String password = "097db";
 
@@ -40,7 +41,9 @@ public class ApplJDBC {
 		// Statement allows you to send inquiries database
 		// ResultSet rs = st.executeQuery("select * from Users");
 		//ResultSet rs = st.executeQuery("SELECT * FROM dbo.Users;");
-		ResultSet rs = st.executeQuery("SELECT * FROM users;");
+		//st.execute("INSERT INTO dbo.Users (Login, Password, FirstName, LastName, Email, RegionRef, RoleRef) VALUES ('inew3', 'qwerty', 'inew1', 'inew2', 'mail@gmail.com', '1', '1');");
+		st.execute("DELETE dbo.Users WHERE Login LIKE 'inew%';");
+		ResultSet rs = st.executeQuery("SELECT * FROM users WHERE RoleRef='1';");
 		//
 		// ResultSet gets the result table
 		int x = rs.getMetaData().getColumnCount();

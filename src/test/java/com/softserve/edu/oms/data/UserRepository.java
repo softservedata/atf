@@ -75,4 +75,16 @@ public final class UserRepository {
     			.build();
 	}
 
+	public IUser getNewUser() {
+		return User.get()
+    			.setFirstname("inew1")
+    			.setLastname("inew2")
+    			.setLogin("inew3")
+    			.setPassword("qwerty")
+    			.setEmail("mail@gmail.com")
+    			.setRegion("West")
+    			.setRole("Administrator")
+    			.build();
+	}
+
 }
