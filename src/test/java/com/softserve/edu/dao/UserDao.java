@@ -106,15 +106,20 @@ public class UserDao {
 //                        resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6),
 //                        Long.parseLong(resultSet.getString(7)), Long.parseLong(resultSet.getString(8))));
             	UserDB userDB = new UserDB(Long.parseLong(resultSet.getString(1)), resultSet.getString(2),
-                        resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6),
-                        Long.parseLong(resultSet.getString(7)), Long.parseLong(resultSet.getString(8)));
-            	if ((resultSet.getString(9) == null) || (resultSet.getString(9).toLowerCase().equals("null"))) {
+                        resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), 1L, 1L);
+            	if (resultSet.getString(7) != null) {
+            		userDB.setRegion(Long.parseLong(resultSet.getString(7)));
+            	}
+            	if (resultSet.getString(8) != null) {
+            		userDB.setRole(Long.parseLong(resultSet.getString(8)));
+            	}
+            	if ((resultSet.getString(9) == null)
+            			|| (resultSet.getString(9).toLowerCase().equals("null"))) {
             		userDB.setIsUserActive(0L);
             	} else {
             		userDB.setIsUserActive(Long.parseLong(resultSet.getString(9)));
             	}
                 allUsers.add(userDB);
-
             }
         } catch (SQLException e) {
             throw new RuntimeException(DATABASE_READING_ERROR, e);
@@ -134,6 +139,7 @@ public class UserDao {
                 }
             }
         }
+        System.out.println("+++++ ***** ALL USERS SIZE = " + allUsers.size());
         return allUsers;
     }
 

@@ -54,11 +54,15 @@ public class UserService {
     public List<IUser> getAllUsers() {
     	List<IUser> result = new ArrayList<IUser>();
     	for (UserDB userDB : userDao.getAllUsers()) {
+    		// TODO Remove hard code (iva or (result.size() < 5))
     		if ((userDB.getIsUserActive() == 1) 
-    				&& (userDB.getLogin().toLowerCase().equals("iva"))) {
+    				&& ((userDB.getLogin().toLowerCase().equals("iva"))
+    						|| (result.size() < 5)) ) {
+    			System.out.println("+++++result.add "+UserUtils.get().userDB2IUser(userDB).getLogin());
     			result.add(UserUtils.get().userDB2IUser(userDB));
     		}
     	}
+    	System.out.println("+++++result SIZE= "+result.size());
     	return result;
     }
     
