@@ -41,8 +41,11 @@ public class ApplJDBC {
 		// Statement allows you to send inquiries database
 		// ResultSet rs = st.executeQuery("select * from Users");
 		//ResultSet rs = st.executeQuery("SELECT * FROM dbo.Users;");
-		//st.execute("INSERT INTO dbo.Users (Login, Password, FirstName, LastName, Email, RegionRef, RoleRef) VALUES ('inew3', 'qwerty', 'inew1', 'inew2', 'mail@gmail.com', '1', '1');");
-		st.execute("DELETE dbo.Users WHERE Login LIKE 'inew%';");
+		//st.execute("INSERT INTO dbo.Users (Login, Password, FirstName, LastName, Email, RegionRef, RoleRef, IsUserActive) VALUES ('inew3', 'qwerty', 'inew1', 'inew2', 'mail@gmail.com', '1', '1', '1');");
+		//st.execute("INSERT INTO dbo.Users (Login, Password, FirstName, LastName, Email, RegionRef, RoleRef, IsUserActive) VALUES ('iva', 'qwerty', 'ivanka', 'horoshko', 'mail@gmail.com', '1', '1', '1');");
+		//st.execute("DELETE dbo.Users WHERE Login LIKE 'inew%';");
+		//st.execute("DELETE dbo.Users WHERE Login = 'iva';");
+		//ResultSet rs = st.executeQuery("SELECT * FROM users WHERE Login='iva';");
 		ResultSet rs = st.executeQuery("SELECT * FROM users WHERE RoleRef='1';");
 		//
 		// ResultSet gets the result table

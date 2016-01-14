@@ -102,9 +102,19 @@ public class UserDao {
             resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 // TODO Use Builder
-                allUsers.add(new UserDB(Long.parseLong(resultSet.getString(1)), resultSet.getString(2),
+//                allUsers.add(new UserDB(Long.parseLong(resultSet.getString(1)), resultSet.getString(2),
+//                        resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6),
+//                        Long.parseLong(resultSet.getString(7)), Long.parseLong(resultSet.getString(8))));
+            	UserDB userDB = new UserDB(Long.parseLong(resultSet.getString(1)), resultSet.getString(2),
                         resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6),
-                        Long.parseLong(resultSet.getString(7)), Long.parseLong(resultSet.getString(8))));
+                        Long.parseLong(resultSet.getString(7)), Long.parseLong(resultSet.getString(8)));
+            	if ((resultSet.getString(9) == null) || (resultSet.getString(9).toLowerCase().equals("null"))) {
+            		userDB.setIsUserActive(0L);
+            	} else {
+            		userDB.setIsUserActive(Long.parseLong(resultSet.getString(9)));
+            	}
+                allUsers.add(userDB);
+
             }
         } catch (SQLException e) {
             throw new RuntimeException(DATABASE_READING_ERROR, e);

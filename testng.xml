@@ -5,8 +5,11 @@
 	<!-- 3 ERROR 5 WARNING 7 INFO -->
 	<test verbose="7" name="Test1">
 		<classes>
+		    <!--
 			<class name="com.softserve.edu.oms.tests.LoginTest"/>
 			<class name="com.softserve.edu.AppTest"/>
+			 -->
+			<class name="com.softserve.edu.oms.tests.LoginParallelTest2"/>
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

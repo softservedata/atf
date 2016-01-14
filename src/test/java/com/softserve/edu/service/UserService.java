@@ -1,5 +1,8 @@
 package com.softserve.edu.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.softserve.edu.dao.DataSource;
 import com.softserve.edu.dao.UserDao;
 import com.softserve.edu.entity.UserDB;
@@ -48,6 +51,17 @@ public class UserService {
         return userDB.getFirstname();
     }
 
+    public List<IUser> getAllUsers() {
+    	List<IUser> result = new ArrayList<IUser>();
+    	for (UserDB userDB : userDao.getAllUsers()) {
+    		if ((userDB.getIsUserActive() == 1) 
+    				&& (userDB.getLogin().toLowerCase().equals("iva"))) {
+    			result.add(UserUtils.get().userDB2IUser(userDB));
+    		}
+    	}
+    	return result;
+    }
+    
     public boolean deleteUser(IUser user) {
     	UserDB userDB = userDao.getUserByLogin(user.getLogin());
         return userDao.deleteUserDB(userDB);

@@ -1,5 +1,9 @@
 package com.softserve.edu.oms.data;
 
+import java.util.List;
+
+import com.softserve.edu.service.UserService;
+
 public final class UserRepository {
 
 	private static volatile UserRepository instance = null;
@@ -85,6 +89,18 @@ public final class UserRepository {
     			.setRegion("West")
     			.setRole("Administrator")
     			.build();
+	}
+
+	public static List<IUser> getAllUsersCSV() {
+		return new UsersUtils().getAllUsersCSV();
+	}
+	
+	public static List<IUser> getAllUsersExcel() {
+		return new UsersUtils().getAllUsersExcel();
+	}
+
+	public static List<IUser> getAllUsersDB() {
+		return UserService.get(DataSourceRepository.getJtdsMsSqlRemote()).getAllUsers();
 	}
 
 }

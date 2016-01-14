@@ -4,7 +4,7 @@ public class UserDB {
     public static enum UserDBQueries {
         INSERT_USER_BY_LOGIN("INSERT INTO dbo.Users (Login, Password, FirstName, LastName, Email, RegionRef, RoleRef, IsUserActive) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '1');"),
         GET_USER_BY_LOGIN("SELECT ID, Login, Password, FirstName, LastName, Email, RegionRef, RoleRef FROM dbo.Users WHERE Login = '%s';"),
-        GET_ALL_USERS("SELECT ID, Login, Password, FirstName, LastName, Email, RegionRef, RoleRef FROM dbo.Users;"),
+        GET_ALL_USERS("SELECT ID, Login, Password, FirstName, LastName, Email, RegionRef, RoleRef, IsUserActive FROM dbo.Users;"),
         DELETE_USER_BY_ID("DELETE dbo.Users WHERE ID='%s';"),
         DELETE_USER_BY_PARTIAL_LOGIN("DELETE dbo.Users WHERE Login LIKE '%s%%';");
         private String query;
@@ -27,6 +27,7 @@ public class UserDB {
     private String email;
     private Long region;
     private Long role;
+    private Long isUserActive;
 
     // TODO Create Factory, Builder
     public UserDB(Long id, String login, String password, String firstname, String lastname, String email, Long region,
@@ -41,6 +42,19 @@ public class UserDB {
         this.role = role;
     }
 
+//    public UserDB(Long id, String login, String password, String firstname, String lastname, String email, Long region,
+//            Long role, Long isUserActive) {
+//        this.id = id;
+//        this.login = login;
+//        this.password = password;
+//        this.firstname = firstname;
+//        this.lastname = lastname;
+//        this.email = email;
+//        this.region = region;
+//        this.role = role;
+//        this.isUserActive = isUserActive;
+//    }
+    
     // setters - - - - -
 
     public void setId(Long id) {
@@ -75,6 +89,10 @@ public class UserDB {
         this.role = role;
     }
 
+    public void setIsUserActive(Long isUserActive) {
+        this.isUserActive = isUserActive;
+    }
+
     // getters - - - - -
 
     public Long getId() {
@@ -107,6 +125,10 @@ public class UserDB {
 
     public Long getRole() {
         return role;
+    }
+
+    public Long getIsUserActive() {
+        return isUserActive;
     }
 
 }
